@@ -123,7 +123,7 @@ group :production, :development do
 end
 
 gem "rollbar"
-gem "version", git: "https://github.com/pglombardo/version.git", branch: "master"
+gem "version", git: "https://github.com/pglombardo/version.git", ref: "97678e0"
 gem "administrate", "~> 0.20.1"
 gem "rqrcode", "~> 2.2"
 gem "turnout2024", require: "turnout"

@@ -1,0 +1,35 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.32
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: 'mchpwpush_user'
+      MYSQL_PASSWORD: 'mchpwpush_passwd#123'
+      MYSQL_DATABASE: 'mchpwpush'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  pwpush:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: senha-machine
+    environment:
+      - DATABASE_URL=mysql2://mchpwpush_user:mchpwpush_passwd#123@db/mchpwpush
+      - RAILS_ENV=development
+      - RACK_ENV=development
+      - SECRET_KEY_BASE=783ff1544b9612d8bceb8e26a0bab0cf22543eec658a498e7ef9e1d617976f960092005c8a54cb588759dc6dd8fd054bc4eca4a94dd7b96c6efda4a14a01bfbd
+    ports:
+      - "5100:5100"
+    depends_on:
+      - db
+    volumes:
+      - .:/opt/PasswordPusher
+    links:
+      - db:mysql
+
+volumes:
+  mysql-data:

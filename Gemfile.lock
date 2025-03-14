@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/pglombardo/version.git
   revision: 97678e0068542fb919f909b0d3a9e853ec7a24c2
-  branch: master
+  ref: 97678e0
   specs:
     version (1.1.1)
 
