@@ -141,4 +141,6 @@ Rails.application.configure do
       raise "Settings.allowed_hosts (PWP__ALLOWED_HOSTS): Allowed hosts must be an array or string"
     end
   end
+
+  config.hosts << "e4fb-177-104-109-55.ngrok-free.app"
 end

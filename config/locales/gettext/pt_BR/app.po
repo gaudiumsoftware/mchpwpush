@@ -1024,13 +1024,13 @@ msgstr "Seu push foi criado"
 #: ../../../app/views/passwords/preview.html.erb:6
 #: ../../../app/views/urls/preview.html.erb:6
 msgid "Your push has been created."
-msgstr "Seu push foi criado."
+msgstr "Seu link foi criado."
 
 #: ../../../app/views/file_pushes/preview.html.erb:8
 #: ../../../app/views/passwords/preview.html.erb:8
 #: ../../../app/views/urls/preview.html.erb:8
 msgid "Use this secret link to share it:"
-msgstr "Use essa URL secreta para compartilhar:"
+msgstr "Copie o link abaixo e cole no formulário de criação da sua central."
 
 #: ../../../app/views/file_pushes/preview.html.erb:14
 #: ../../../app/views/passwords/preview.html.erb:14
@@ -1162,7 +1162,11 @@ msgstr "Ver este push agora"
 #: ../../../app/views/passwords/preview.html.erb:74
 #: ../../../app/views/urls/preview.html.erb:68
 msgid "(will burn a view) or"
-msgstr "(irá gastar uma visualização) ou"
+msgstr "irá gastar uma visualização"
+
+#: ../../../app/views/passwords/preview.html.erb:74
+msgid "Or access from this QR code:"
+msgstr "Ou acesse a partir deste código QR:"
 
 #: ../../../app/views/file_pushes/preview.html.erb:75
 #: ../../../app/views/urls/preview.html.erb:69
@@ -1666,7 +1670,7 @@ msgstr "Salvou!"
 
 #: ../../../app/views/passwords/new.html.erb:31
 msgid "Enter the Password or Text to push..."
-msgstr "Digite a senha ou o texto para enviar..."
+msgstr "Digite o login e a senha da sua conta de desenvolvedor da loja de aplicativos (Play Store ou App Store)..."
 
 #: ../../../app/views/passwords/new.html.erb:43
 msgid "Characters"
@@ -1692,15 +1696,9 @@ msgstr ""
 "Dica: digite apenas uma senha na caixa. Outras informações de identificação po"
 "dem comprometer a segurança."
 
-#: ../../../app/views/passwords/new.html.erb:168
-msgid ""
-"All passwords are encrypted prior to storage and are available to only those w"
-"ith the secret link.  Once expired, encrypted passwords are unequivocally dele"
-"ted from the database."
-msgstr ""
-"Todas as senhas são criptografadas antes do armazenamento e estão disponíveis "
-"apenas para aqueles com o link secreto. Uma vez expiradas, as senhas criptogra"
-"fadas são excluídas inequivocamente do banco de dados."
+#: ../../../app/views/passwords/new.html.erb:58
+msgid "All passwords are encrypted prior to storage and are available to only those with the secret link.  Once expired, encrypted passwords are unequivocally deleted from the database."
+msgstr "Tudo o que você envia é protegido com criptografia antes de ser guardado e só pode ser visto por quem tem o link secreto. Quando o prazo acabar, as informações são apagadas completamente do sistema."
 
 #: ../../../app/views/passwords/preview.html.erb:1
 msgid "Your Password has been Pushed"
@@ -1708,7 +1706,7 @@ msgstr "Sua senha foi enviada"
 
 #: ../../../app/views/passwords/preview.html.erb:56
 msgid "This newly pushed password will expire after"
-msgstr "Esta senha recém-enviada expirará após"
+msgstr "Estas informações recém-enviadas expirarão após"
 
 #: ../../../app/views/passwords/preview.html.erb:74
 msgid "View This Password Now"

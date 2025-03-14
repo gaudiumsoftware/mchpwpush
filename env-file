@@ -1,0 +1,25 @@
+# For an explanation of these settings, see:
+# https://docs.pwpush.com/docs/config-strategies/
+export PWP__DEFAULT_LOCALE=pt-BR
+
+export PWP__SHOW_VERSION=false
+
+export PWP__FILES__EXPIRE_AFTER_DAYS_DEFAULT=7
+export PWP__FILES__EXPIRE_AFTER_DAYS_MAX=7
+export PWP__FILES__EXPIRE_AFTER_VIEWS_DEFAULT=7
+export PWP__FILES__EXPIRE_AFTER_VIEWS_MAX=7
+export PWP__FILES__RETRIEVAL_STEP_DEFAULT=true
+
+export PWP__ENABLE_FILE_PUSHES=false
+export PWP__ENABLE_URL_PUSHES=false
+export PWP__ENABLE_LOGINS=false
+export PWP__BRAND__TITLE="Envio de credenciais"
+export PWP__BRAND__TAGLINE="Compartilhamento de acesso"
+export PWP__BRAND__DISCLAIMER=""
+export PWP__BRAND__SHOW_FOOTER_MENU=false
+export PWP__BRAND__LIGHT_LOGO=https://asset-cnt.taximachine.com.br/upload/coop_placeholders/Spotlight@2x.png
+export PWP__BRAND__DARK_LOGO=https://asset-cnt.taximachine.com.br/upload/coop_placeholders/Spotlight@2x.png
+export PWP__THEME=minty
+
+export PWP__LOG_TO_STDOUT=false
+export PWP__LOG_LEVEL=info

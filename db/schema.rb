@@ -11,35 +11,35 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
     t.string "service_name", null: false
-    t.integer "byte_size", null: false
+    t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "file_pushes", force: :cascade do |t|
+  create_table "file_pushes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "expire_after_days"
     t.integer "expire_after_views"
     t.boolean "expired", default: false
@@ -49,17 +49,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.boolean "deletable_by_viewer", default: true
     t.boolean "retrieval_step", default: false
     t.datetime "expired_on"
-    t.text "payload_ciphertext", limit: 16777215
-    t.text "text", limit: 16777215
+    t.text "payload_ciphertext", size: :medium
+    t.text "text", size: :medium
     t.text "note_ciphertext"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "passphrase_ciphertext", limit: 2048
+    t.text "passphrase_ciphertext"
     t.index ["url_token"], name: "index_file_pushes_on_url_token", unique: true
     t.index ["user_id"], name: "index_file_pushes_on_user_id"
   end
 
-  create_table "passwords", force: :cascade do |t|
+  create_table "passwords", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "expire_after_days"
     t.integer "expire_after_views"
     t.boolean "expired", default: false
@@ -71,14 +71,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.boolean "deletable_by_viewer", default: true
     t.boolean "retrieval_step", default: false
     t.datetime "expired_on", precision: nil
-    t.text "payload_ciphertext", limit: 16777215
+    t.text "payload_ciphertext", size: :medium
     t.text "note_ciphertext"
-    t.text "passphrase_ciphertext", limit: 2048
+    t.text "passphrase_ciphertext"
     t.index ["url_token"], name: "index_passwords_on_url_token", unique: true
     t.index ["user_id"], name: "index_passwords_on_user_id"
   end
 
-  create_table "solid_queue_blocked_executions", force: :cascade do |t|
+  create_table "solid_queue_blocked_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
     t.integer "priority", default: 0, null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["job_id"], name: "index_solid_queue_blocked_executions_on_job_id", unique: true
   end
 
-  create_table "solid_queue_claimed_executions", force: :cascade do |t|
+  create_table "solid_queue_claimed_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.bigint "process_id"
     t.datetime "created_at", null: false
@@ -98,14 +98,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["process_id", "job_id"], name: "index_solid_queue_claimed_executions_on_process_id_and_job_id"
   end
 
-  create_table "solid_queue_failed_executions", force: :cascade do |t|
+  create_table "solid_queue_failed_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.text "error"
     t.datetime "created_at", null: false
     t.index ["job_id"], name: "index_solid_queue_failed_executions_on_job_id", unique: true
   end
 
-  create_table "solid_queue_jobs", force: :cascade do |t|
+  create_table "solid_queue_jobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "queue_name", null: false
     t.string "class_name", null: false
     t.text "arguments"
@@ -123,13 +123,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["scheduled_at", "finished_at"], name: "index_solid_queue_jobs_for_alerting"
   end
 
-  create_table "solid_queue_pauses", force: :cascade do |t|
+  create_table "solid_queue_pauses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "queue_name", null: false
     t.datetime "created_at", null: false
     t.index ["queue_name"], name: "index_solid_queue_pauses_on_queue_name", unique: true
   end
 
-  create_table "solid_queue_processes", force: :cascade do |t|
+  create_table "solid_queue_processes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "kind", null: false
     t.datetime "last_heartbeat_at", null: false
     t.bigint "supervisor_id"
@@ -143,7 +143,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["supervisor_id"], name: "index_solid_queue_processes_on_supervisor_id"
   end
 
-  create_table "solid_queue_ready_executions", force: :cascade do |t|
+  create_table "solid_queue_ready_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
     t.integer "priority", default: 0, null: false
@@ -153,7 +153,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["queue_name", "priority", "job_id"], name: "index_solid_queue_poll_by_queue"
   end
 
-  create_table "solid_queue_recurring_executions", force: :cascade do |t|
+  create_table "solid_queue_recurring_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "task_key", null: false
     t.datetime "run_at", null: false
@@ -162,7 +162,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["task_key", "run_at"], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
   end
 
-  create_table "solid_queue_recurring_tasks", force: :cascade do |t|
+  create_table "solid_queue_recurring_tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "schedule", null: false
     t.string "command", limit: 2048
@@ -178,7 +178,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["static"], name: "index_solid_queue_recurring_tasks_on_static"
   end
 
-  create_table "solid_queue_scheduled_executions", force: :cascade do |t|
+  create_table "solid_queue_scheduled_executions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
     t.integer "priority", default: 0, null: false
@@ -188,7 +188,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["scheduled_at", "priority", "job_id"], name: "index_solid_queue_dispatch_all"
   end
 
-  create_table "solid_queue_semaphores", force: :cascade do |t|
+  create_table "solid_queue_semaphores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.integer "value", default: 1, null: false
     t.datetime "expires_at", null: false
@@ -199,7 +199,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
-  create_table "urls", force: :cascade do |t|
+  create_table "urls", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "expire_after_days"
     t.integer "expire_after_views"
     t.boolean "expired", default: false
@@ -208,17 +208,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.boolean "deleted", default: false
     t.boolean "retrieval_step", default: false
     t.datetime "expired_on"
-    t.text "payload_ciphertext", limit: 2097152
-    t.text "text", limit: 2097152
+    t.text "payload_ciphertext", size: :medium
+    t.text "text", size: :medium
     t.text "note_ciphertext"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "passphrase_ciphertext", limit: 2048
+    t.text "passphrase_ciphertext"
     t.index ["url_token"], name: "index_urls_on_url_token", unique: true
     t.index ["user_id"], name: "index_urls_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -248,7 +248,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_08_192458) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "views", force: :cascade do |t|
+  create_table "views", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "password_id"
     t.string "ip"
     t.string "user_agent"

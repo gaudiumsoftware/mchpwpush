@@ -7,13 +7,6 @@
 
       <p class='mt-5'><%= _('Use this secret link to share it:') %></p>
       <%= render partial: 'application/secret_url_bar' %>
-      <%= @qr_code %>
-
-      <p class="d-inline-flex gap-1 mt-5 mb-2">
-        <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <%= _('Print & Share') %>
-        </button>
-      </p>
       <div class="collapse" id="collapseExample">
         <div class="card">
           <div class="card-header"><%= _('Generate a Printable Page for End Users') %></div>
@@ -70,18 +63,10 @@
         <p class='mb-5'><%= _('It also includes a') %> <strong><%= _('1-click preliminary retrieval step') %></strong>.  </p>
       <% end %>
 
-      <p class='mb-5'>
-        <%= link_to _('View This Password Now'), @secret_url, "data-turbo-prefetch": false %> <%= _('(will burn a view) or') %>
-        <%= link_to _('Push Another Password'), new_password_path %>
-      </p>
-
       <% if user_signed_in? %>
         <%= link_to audit_password_path(@push), class: 'btn btn-secondary btn-sm', rel: 'nofollow' do %>
           <em class='bi-card-list'></em> <%= _('View Audit Log') %>
         <% end %>
       <% end %>
-
-      <p class='mt-5 small'> <%= t('pushes.preview.link_lang_tip') %> </p>
-      <p class='small'> <%= t('pushes.preview.link_lang_auto') %> </p>
   </div>
 </div>
